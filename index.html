@@ -65,15 +65,11 @@
 	myVideo.addEventListener("timeupdate", function(event) {
 		var curMs = event.target.currentTime * 1000;		
 		var content;
-		var doDeferred6;
-		var doDeferred7;
 		
 		if (curMs > 29500) {
 			content = v7;
-			doDeferred7 = true;
 		} else if (curMs > 24600) {
 			content = v6;
-			doDeferred6 = true;
 		}else if (curMs > 21300) {
 			content = v5;
 		}else if (curMs > 19500) {
@@ -96,12 +92,6 @@
 		content = atob(content);
 		var iframe = document.querySelector("#wobsitecontent");
 		iframe.src = "data:text/html;charset=utf-8," + escape(content);
-		
-		// Iframe can't access local referenced resources like "star.gif" so swap them in live
-		if (doDeferred7) {
-			iframe.contents().find('img[src="star.gif"]').alt = "touched from outside";
-		} else if (doDeferred6) {
-		}
 	});
 	
 	
